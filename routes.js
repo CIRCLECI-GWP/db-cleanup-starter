@@ -32,8 +32,8 @@ app.get("/check-access", async (request, response) => {
   }
 });
 
-app.post("/secured", async (request, response) => {
-  const user = await userModel.find({ email: request.body.email });
+app.get("/secured/:email", async (request, response) => {
+  const user = await userModel.find({ email: request.params.email });
 
   if (user.length > 0) {
     response.json(content);
